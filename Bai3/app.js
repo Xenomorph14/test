@@ -11,7 +11,7 @@ fetch("https://opentdb.com/api.php?amount=5&category=21&difficulty=easy&type=mul
     })
 var applyData = (data)=>{
     let num = 1;
-    let correctData = [];
+    let addData = [];
     data.forEach((e) => {
         Data.push(`
             <quiz-template
@@ -22,7 +22,7 @@ var applyData = (data)=>{
             answer4="${e.correct_answer}">
             </quiz-template>
         `);
-        correctData.push(e.correct_answer);
+        addData.push(e.correct_answer);
         num++;
     });
 }
