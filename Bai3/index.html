@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./syle.css">
 </head>
+
 <body>
-    <quiz-template></quiz-template>
-</body>
-<template id="quiz-template">
-    <div class="quiz-container">
-        <div id="question"></div>
-        <div id="answer1"></div>
-        <div id="answer2"></div>
-        <div id="answer3"></div>
-        <div id="answer4"></div>
+    <div id="all">
+        <div class="container">
+            <div class="scoreBoard">
+                <span class="score-num"></span>/<span class="answered-num"></span>
+            </div>
+            <form id="quiz_form">
+                <h1>Câu hỏi:<span class="qus"></span></h1>
+                <div class="all-options">
+
+                </div>
+                <div class="buttons">
+                    <button type="submit">Xác nhận</button>
+                </div>
+                <div id="notificationTrue"></div>
+                <div id="notificationFalse"></div>
+
+
+            </form>
+        </div>
     </div>
-</template>
-<script src="./app.js" type="module"></script>
+
+
+
+    <script src="./app.js" type="module"></script>
+</body>
+
 </html>
