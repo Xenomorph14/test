@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/storeMember" method="POST"/*enctype="multipart/form-data"*/>
+        <div>
+            <label for="name" >Name:</label>
+            <input type="text" required="true" name="name" placeholder="Enter Name">
+        </div>
+        <div>
+            <label for="birthday" >Birthday</label>
+            <input type ="date" required="true" name="birthday">
+        </div>
+        <div>
+            <label for="position" >Position</label>
+            <input type="text" required="true" name="position" placeholder="Enter Position">
+        </div>
+        <div>
+            <label for="department" >Department</label>
+            <input type="text" required="true" name="department" placeholder="Enter Department">
+        </div>
+        <button type="submit">CreateM</button>
+    </form>
+
+    <hr>
+    <form action="/storeStatus" method="POST">
+        <button type="submit">CreateS</button>
+    </form>
+    <hr>
+    <form action="/storeTable" method="POST">
+        <button type="submit">CreateT</button>
+    </form>
+    <hr>
+    <form name="deleteForm" method="POST">
+        <input name="id" required="true" type="text" placeholder="Enter _id">
+        <button name="btn1" onclick="return onBtn1()">Del doc staff</button>
+        <button name="btn2" onclick="return onBtn2()">Del doc status</button>
+        <button name="btn3" onclick="return onBtn3()">Del doc table</button>
+    </form>
+</body>
+<script>
+    function onBtn1() {
+    document.deleteForm.action = "/deleteDocStaff";
+    document.deleteForm.submit();
+    return true;
+}
+    function onBtn2() {
+    document.deleteForm.action = "/deleteDocStatus";
+    document.deleteForm.submit();
+    return true;
+}
+    function onBtn3() {
+    document.deleteForm.action = "/deleteDocTable";
+    document.deleteForm.submit();
+    return true;
+}
+</script>
+
+</html>
