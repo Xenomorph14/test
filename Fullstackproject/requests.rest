@@ -1,0 +1,10 @@
+POST http://localhost:4000/logintoken
+
+{
+    "userName" : "thang"
+}
+###
+GET  http://localhost:4000/posts
+Content-Type: application/x-www-form-urlencoded
+
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU5MTkxMzF9.EkqRAa_z333je2zmsN-8YQKWBTMN9YyxDYwRHnLX03I
