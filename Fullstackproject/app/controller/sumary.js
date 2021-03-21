@@ -4,5 +4,4 @@ module.exports =  (req,res) => {
         Status.find((err,status) => {
             
         } )
-
 }
