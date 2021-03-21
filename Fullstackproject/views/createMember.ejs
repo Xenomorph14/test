@@ -55,12 +55,43 @@
         <button name="btn2" onclick="return onBtn2()">Del doc status</button>
         <button name="btn3" onclick="return onBtn3()">Del doc table</button>
     </form>
-    <hr>
     <!-- <form  action="/query" method="POST">
-            <input name="idForQuery" required="true" placeholder="Enter _id"></input>
-            <button type="submit" name="btn4"> Query  user info</button>
+        <input name="idForQuery" required="true" placeholder="Enter _id"></input>
+        <button type="submit" name="btn4"> Query  user info</button>
     </form>
+    <hr> -->
+    <form name="updateform" action="/updateMember"  method="POST">
+        <div>Update</div>
+        <label for="id">ID: </label>
+        <input name="id" required="true" type="text" placeholder="Enter _id">
+        <form action="/storeMember" method="POST">
+            <div>
+                <label for="newName" >New-name</label>
+                <input type="text" name="newName" placeholder="Enter New Name">
+            </div>
+            <div>
+                <label for="newBirthday" >New-birthday</label>
+                <input type ="date" name="newBirthday">
+            </div>
+            <div>
+                <label for="newPosition" >New-position</label>
+                <input type="text" name="newPosition" placeholder="Enter Position">
+            </div>
+            <div>
+                <label for="newDepartment" >New-department</label>
+                <input type="text" name="newDepartment" placeholder="Enter Department">
+            </div>
+            <button type="submit" name="btn1" class="btn-update" onclick="return onBtn1()">updateDocStaff</button>
+        </form>
+    </form>
+
+    <hr>
+    <form action="/dataMember" method="GET">
+        <button type="submit">Data member</button>
+    </form>
+
 </body>
+<!--
 <script>
     function onBtn1() {
     document.deleteForm.action = "/deleteDocStaff";

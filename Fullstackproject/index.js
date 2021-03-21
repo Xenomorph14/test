@@ -61,6 +61,10 @@ const storeMember = require("./app/controller/storeMember")
 const deleteDocStaff = require("./app/controller/deleteDocStaff");
 const deleteDocStatus = require("./app/controller/deleteDocStatus");
 const deleteDocTable = require("./app/controller/deleteDocTable");
+// nhat update 
+const dataMember = require("./app/controller/dataMember")
+const updateMember = require("./app/controller/updateMember")
+
 const queryUserInfo = require("./app/controller/queryUserInfo")
 const sumary = require("./app/controller/sumary");
 const checkAuthenticated = require("./middleware/checkAuthenticated")
@@ -83,6 +87,9 @@ app.post("/deleteDocTable", deleteDocTable )
 app.post("/query", queryUserInfo )
 app.post ("/sumary", sumary)
 app.delete("/logout", logout )
+// lại là nhật update 
+app.get("/dataMember", dataMember)
+app.post("/updateMember", updateMember)
 
 // const posts = [
 //     {
