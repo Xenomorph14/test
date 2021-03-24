@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+mongoose.set('useFindAndModify', false);
 async function connect() {
     try{
         await mongoose.connect("mongodb://localhost:27017/test_db",{
@@ -13,5 +13,4 @@ async function connect() {
         console.log("Connect failure!!!!");
     }
 }
-
 module.exports = {connect};

@@ -3,63 +3,72 @@ const StaffInformation = require("../models/staffInformation");
 
 module.exports = (req,res) => {
     let id = req.body.id;
-    StaffInformation.find((err,staffInfo) => {
-        (err) => {
-            res.redirect("/createMember");
-        }
-        let check = false;
-        for (let i = 0; i <  staffInfo.length; i++) {
-            if (id == staffInfo[i]._id){
-                check = true;
-            }
-        }
-        console.log(check);
-        if ( check == true) {
-            StaffInformation.findById(id, function (error, staffIformation) {
-                // console.log(id);
-                (error) => {
+    StaffInformation.findById(id,(error,staffInformation)=>{
+                if (error) {
                     res.redirect("/createMember");
+                    return console.log("Lỗi rồi baby");
                 }
+
                 console.log("success");
+                let newEmail = req.body.newEmail;
+                let newPassword = req.body.newPassword;
                 let newName = req.body.newName;
                 let newBirthday = req.body.newBirthday;
                 let newPosition = req.body.newPosition;
-                let newDepartment = req.body.newDepartment;
-                switch (newName) {
+                let newDepartment = req.body.newDepartm
+                switch (newEmail) {
                     case "":
-                        newName = staffIformation.name;
+                        newEmail = staffInformation.email;
                         break;
                     case null:
-                        newName = staffIformation.name;
+                        newEmail = staffInformation.email;
+                        break;
+                }
+                switch (newPassword) {
+                    case "":
+                        newPassword = staffInformation.password;
+                        break;
+                    case null:
+                        newPassword = staffInformation.password;
+                        break;
+                }
+                switch (newName) {
+                    case "":
+                        newName = staffInformation.name;
+                        break;
+                    case null:
+                        newName = staffInformation.name;
                         break;
                 }
                 switch (newBirthday) {
                     case "":
-                        newBirthday = staffIformation.birthday;
+                        newBirthday = staffInformation.birthday;
                         break;
                     case null:
-                        newBirthday = staffIformation.birthday;
+                        newBirthday = staffInformation.birthday;
                         break;
                 }
                 switch (newPosition) {
                     case "":
-                        newPosition = staffIformation.position;
+                        newPosition = staffInformation.position;
                         break;
                     case null:
-                        newPosition = staffIformation.position;
+                        newPosition = staffInformation.position;
                         break;
                 }
                 switch (newDepartment) {
                     case "":
-                        newDepartment = staffIformation.department;
+                        newDepartment = staffInformation.department;
                         break;
                     case null:
-                        newDepartment = staffIformation.department;
+                        newDepartment = staffInformation.department;
                         break;
                 }
                 StaffInformation.findByIdAndUpdate( 
                     id,
                     {
+                        email: newEmail,
+                        password: newPassword,
                         name: newName,
                         birthday: newBirthday,
                         position: newPosition,
@@ -74,12 +83,8 @@ module.exports = (req,res) => {
                         console.log("updating");
                         // res.redirect("/createMember");
                         res.redirect("/createMember")
+                        console.log(staffInfo.email);
                     }
                 )   
-            })   
-        } else {
-            res.redirect("/createMember");
-            console.log("Lỗi rồi baby");
-        }
-    }) 
+    })
 }

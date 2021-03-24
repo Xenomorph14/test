@@ -1,7 +1,7 @@
 
 const StaffInformation = require ("../models/staffInformation")
 const Status = require( "../models/status" )
-const TableOfWork = require ("../models/tableOfWork")
+const TableOfWork = require ("../models/tableOfWorks")
 const bcrypt = require("bcrypt")
 
 module.exports = async (req, res) => {
@@ -15,16 +15,16 @@ module.exports = async (req, res) => {
                 console.log("cannot create");
                 return res.redirect("./createMember")
             }  else{
-                console.log("Create succes!!");
+                console.log("Create success!!");
                 res.redirect("./createMember")
                 console.log(staffinfo._id);
-    
+
                 //Create status
                Status.create({
                    _id:staffinfo._id},(err,status) => {
                        console.log(err,status);
                    })
-    
+
                 //Create table
                 TableOfWork.create({
                     _id :staffinfo._id,
@@ -33,11 +33,11 @@ module.exports = async (req, res) => {
                 },(err,table) => {
                     console.log(err,table);
                 })
-    
+
             }
         })
-    }catch{
-        console.log(" Something wrong");
+    } catch {
+        console.log("Something wrong");
     }
     
 }

@@ -12,11 +12,11 @@
     <form action="/storeMember" method="POST"/*enctype="multipart/form-data"*/>
     <div>
         <label for="email" >Email:</label>
-        <input type="email" required="true" name="email" placeholder="Enter Email">
+        <input type="email" required="true" name="email" placeholder="Enter Email" required>
     </div>
     <div>
         <label for="password" >Password:</label>
-        <input type="password" required="true" name="password" value="123456" placeholder="Enter Name">
+        <input type="password" required="true" name="password" value="" placeholder="Enter password" required>
     </div>
     <div>
             <label for="name" >Name:</label>
@@ -49,7 +49,7 @@
         <button type="submit">CreateT</button>
     </form> -->
     <hr>
-    <form name="deleteForm" method="POST">
+    <form name="deleteForm" action="/deleteDocStaff" method="POST">
         <input name="idForDel" required="true" type="text" placeholder="Enter _id">
         <button name="btn1" onclick="return onBtn1()">Del doc staff</button>
         <button name="btn2" onclick="return onBtn2()">Del doc status</button>
@@ -60,11 +60,21 @@
         <button type="submit" name="btn4"> Query  user info</button>
     </form>
     <hr> -->
+
+    <!-- form update  -->
     <form name="updateform" action="/updateMember"  method="POST">
         <div>Update</div>
         <label for="id">ID: </label>
         <input name="id" required="true" type="text" placeholder="Enter _id">
         <form action="/storeMember" method="POST">
+            <div>
+                <label for="newEmail" >New-email</label>
+                <input type="text" name="newEmail" placeholder="Enter New Name">
+            </div>
+            <div>
+                <label for="newPassword" >New-password</label>
+                <input type="text" name="newPassword" placeholder="Enter new password">
+            </div>
             <div>
                 <label for="newName" >New-name</label>
                 <input type="text" name="newName" placeholder="Enter New Name">
@@ -84,12 +94,35 @@
             <button type="submit" name="btn1" class="btn-update" onclick="return onBtn1()">updateDocStaff</button>
         </form>
     </form>
-
+    <hr>
+    <!-- form update password -->
+    <form name="update-password-form" action="/updatePassword" method="POST">
+        <div>
+            <label for="id">ID: </label>
+            <input name="id" required="true" type="text" placeholder="Enter _id">
+        </div>
+        <div>
+            <label for="oldPassword" >Old-password</label>
+            <input type="text" name="oldPassword" placeholder="Enter old password">
+        </div>
+        <div>
+            <label for="newPassword" >New-password</label>
+            <input type="text" name="newPassword" placeholder="Enter new password">
+        </div>
+        <button type="submit" name="btn-p" class="btn-update-password" >change password</button>
+    </form>
+    <!--form read data all staff  -->
     <hr>
     <form action="/dataMember" method="GET">
         <button type="submit">Data member</button>
     </form>
-
+    <form action="/clearDocStatus" method="POST">
+        <div>
+            <label for="idClearStatus">ID: </label>
+            <input name="idClearStatus" required="true" type="text" placeholder="Enter _id">
+        </div>
+        <button type="submit">Clear status data</button>
+    </form>
 </body>
 <!--
 <script>

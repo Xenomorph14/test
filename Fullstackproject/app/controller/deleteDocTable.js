@@ -1,4 +1,4 @@
-const Table = require("../models/tableOfWork");
+const Table = require("../models/tableOfWorks");
 
 module.exports = (req,res) => {
     console.log(req.body.id);
