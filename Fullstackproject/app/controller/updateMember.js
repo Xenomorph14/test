@@ -1,4 +1,5 @@
 const { model } = require("mongoose");
+const { validate } = require("../models/staffInformation");
 const StaffInformation = require("../models/staffInformation");
 
 module.exports = (req,res) => {
@@ -6,16 +7,19 @@ module.exports = (req,res) => {
     StaffInformation.findById(id,(error,staffInformation)=>{
                 if (error) {
                     res.redirect("/createMember");
+                    
                     return console.log("Lỗi rồi baby");
                 }
 
                 console.log("success");
+                // get input information
                 let newEmail = req.body.newEmail;
                 let newPassword = req.body.newPassword;
                 let newName = req.body.newName;
                 let newBirthday = req.body.newBirthday;
                 let newPosition = req.body.newPosition;
                 let newDepartment = req.body.newDepartm
+                // validate input information
                 switch (newEmail) {
                     case "":
                         newEmail = staffInformation.email;
@@ -87,4 +91,5 @@ module.exports = (req,res) => {
                     }
                 )   
     })
+    // alert("asd");
 }
