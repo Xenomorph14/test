@@ -3,7 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 const express = require ("express");
 const app = express();
-const db = require("./config/db")
+const db = require("./config/db/mongodb")
 const jwt  = require("jsonwebtoken")
 // app.use(express.json())
 const flash = require("express-flash")
