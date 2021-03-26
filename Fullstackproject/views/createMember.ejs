@@ -123,24 +123,59 @@
         </div>
         <button type="submit">Clear status data</button>
     </form>
+    <hr>
+    <!-- <form name="timeKeeping" action="" method="GET">
+        <button name="start" onclick="return start()">start</button>
+        <button name="finish" onclick="return finish()">finish</button>
+    </form> -->
+    <form action="/start" method="POST">
+        <div>
+            <label for="idTimeStart">ID: </label>
+            <input name="idTimeStart" required="true" type="text" placeholder="Enter _id">
+        </div>
+        <button type="submit">Start</button>
+    </form>
+    <form action="/finish" method="POST">
+        <div>
+            <label for="idTimeFinish">ID: </label>
+            <input name="idTimeFinish" required="true" type="text" placeholder="Enter _id">
+        </div>
+        <button type="submit">Finish</button>
+    </form>
+    <form action="/caculationTime" method="POST">
+        <div>
+            <label for="idTimeKeeping">ID: </label>
+            <input name="idTimeKeeping" required="true" type="text" placeholder="Enter _id">
+        </div>
+        <button type="submit">Caculation time</button>
+    </form>
 </body>
-<!--
-<script>
-    function onBtn1() {
-    document.deleteForm.action = "/deleteDocStaff";
-    document.deleteForm.submit();
-    return true;
-} -->
-    <!-- function onBtn2() {
-    document.deleteForm.action = "/deleteDocStatus";
-    document.deleteForm.submit();
-    return true;
-}
-    function onBtn3() {
-    document.deleteForm.action = "/deleteDocTable";
-    document.deleteForm.submit();
-    return true;
-}
-</script> -->
 
+<!-- <script>
+    function onBtn1() {
+        document.deleteForm.action = "/deleteDocStaff";
+        document.deleteForm.submit();
+    return true;
+    }
+    function onBtn2() {
+        document.deleteForm.action = "/deleteDocStatus";
+        document.deleteForm.submit();
+    return true;
+    }
+    function onBtn3() {
+        document.deleteForm.action = "/deleteDocTable";
+        document.deleteForm.submit();
+    return true;
+    }
+
+    function start(){
+        console.log("test");
+        document.timeKeeping.action = "/start";
+        document.timeKeeping.submit();
+    }
+    function finish(){
+        document.timeKeeping.action = "/finish";
+        document.timeKeeping.submit();
+    }
+</script> -->
 </html>

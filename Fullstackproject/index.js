@@ -17,8 +17,6 @@ initializePassport(
     id  =>  admins.find(admin  =>  admin.id  ===  id)
 )
 
-
-
 //Set view engine
 // const ejs = require("ejs")
 app.set("view engine","ejs")
@@ -56,8 +54,6 @@ const admins = [
 const home = require("./app/controller/home")
 const create = require("./app/controller/createMember")
 const storeMember = require("./app/controller/storeMember")
-// const storeStatus = require("./app/controller/storeStatus")
-// const storeTable = require("./app/controller/storeTable");
 const deleteDocStaff = require("./app/controller/deleteDocStaff");
 const deleteDocStatus = require("./app/controller/deleteDocStatus");
 const deleteDocTable = require("./app/controller/deleteDocTable");
@@ -65,6 +61,9 @@ const dataMember = require("./app/controller/dataMember")     //read require
 const updateMember = require("./app/controller/updateMember") //update require
 const updatePassword = require("./app/controller/updatePassword") //update password require
 const clearDocStatus = require("./app/controller/clearDocStatus") //button clear status data
+const start = require("./app/controller/start")
+const finish = require("./app/controller/finish")
+const caculationTime = require("./app/controller/caculationTime")
 
 const queryUserInfo = require("./app/controller/queryUserInfo")
 const sumary = require("./app/controller/sumary");
@@ -94,6 +93,18 @@ app.post("/updateMember", updateMember)
 app.post("/updatePassword", updatePassword)
 // add button clear status data
 app.post("/clearDocStatus", clearDocStatus)
+
+app.post("/start", start)
+app.post("/finish", finish)
+app.post("/caculationTime", caculationTime)
+
+app.listen(4000,()=>{
+    console.log("App listening on port 4000");
+})
+
+
+
+
 
 // const posts = [
 //     {
@@ -135,8 +146,3 @@ app.post("/clearDocStatus", clearDocStatus)
 //     })
 
 // }
-
-
-app.listen(4000,()=>{
-    console.log("App listening on port 4000");
-})
