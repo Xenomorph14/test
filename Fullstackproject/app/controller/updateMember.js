@@ -1,5 +1,4 @@
 const { model } = require("mongoose");
-const { validate } = require("../models/staffInformation");
 const StaffInformation = require("../models/staffInformation");
 
 module.exports = (req,res) => {
@@ -81,15 +80,13 @@ module.exports = (req,res) => {
                     },
                     {new: true},
                     ( err, staffInfo ) => {
-                        (err) => {
+                        if(err){
                             model.redirect("/createMember");
                         }
+                        console.log(staffInfo);
                         console.log("updating");
-                        // res.redirect("/createMember");
-                        res.redirect("/createMember")
-                        console.log(staffInfo.email);
+                        return res.redirect("/createMember")
                     }
                 )   
     })
-    // alert("asd");
 }

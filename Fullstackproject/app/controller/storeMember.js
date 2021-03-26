@@ -4,13 +4,9 @@ const TableOfWork = require ("../models/tableOfWorks")
 const bcrypt = require("bcrypt")
 
 module.exports = async (req, res) => {
-    // console.log(req.body);
     try {
         let password = await bcrypt.hash(req.body.password, 10)
         req.body.password = password;
-        // console.log(req.body.password);
-        // console.log(bcrypt.compareSync('1234', password));
-        // console.log(req.body);
         StaffInformation.create(req.body, (error, staffinfo) => {
             if(error) {
                 console.log("cannot create");

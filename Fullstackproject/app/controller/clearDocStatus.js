@@ -7,7 +7,7 @@ module.exports = (req,res) => {
     let id = req.body.idClearStatus;
     // Find id 
     Status.findById(id, function (error, status) {
-        // callback khi loi
+        // callback khi lỗi
         if (error){
             res.redirect("/createMember");
             return console.log("Clear status data fail!");
@@ -37,7 +37,6 @@ module.exports = (req,res) => {
             ( err, status ) => {
                 if (err){
                     res.redirect("/createMember");
-                    console.log(err);
                     return console.log("Lỗi update status");
                 }
                 console.log(status);

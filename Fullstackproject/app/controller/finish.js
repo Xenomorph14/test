@@ -21,7 +21,7 @@ module.exports = (req,res) => {
                     console.log("update failed!");
                     return res.redirect("/createMember")
                 }
-                console.log(status);
+                console.log(status.timeEnd);
                 console.log("Update time finish success!");
                 res.redirect("/createMember")
             }
