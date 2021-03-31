@@ -10,13 +10,22 @@ module.exports = (req,res) => {
                     
                     return console.log("Lỗi rồi baby");
                 }
+                let newBirthday = req.body.newBirthday.toString();
+                let arrayBirthday = newBirthday.split("-");
+                newBirthday = "";
+                for(let i=0; i<arrayBirthday.length; i++){
+                    if (arrayBirthday.length-i-1 !== 0){
+                        newBirthday += arrayBirthday[arrayBirthday.length-i-1] + "-";
+                    } else {
+                        newBirthday += arrayBirthday[arrayBirthday.length-i-1];
+                    }
+                }
 
                 console.log("success");
                 // get input information
                 let newEmail = req.body.newEmail;
                 let newPassword = req.body.newPassword;
                 let newName = req.body.newName;
-                let newBirthday = req.body.newBirthday;
                 let newPosition = req.body.newPosition;
                 let newDepartment = req.body.newDepartm
                 // validate input information
