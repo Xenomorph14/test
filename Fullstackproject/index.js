@@ -57,11 +57,9 @@ const storeMember = require("./app/controller/storeMember")
 const deleteDocStaff = require("./app/controller/deleteDocStaff");
 const dataMember = require("./app/controller/dataMember")     //read require
 const updateMember = require("./app/controller/updateMember") //update require
-const updatePassword = require("./app/controller/updatePassword") //update password require
 const clearDocStatus = require("./app/controller/clearDocStatus") //button clear status data
 const caculationTime = require("./app/controller/caculationTime")
 const timeLine = require("./app/controller/storeTimeLine")
-const caculationSpace = require("./app/controller/caculationSpace");
 
 const queryUserInfo = require("./app/controller/queryUserInfo")
 const checkAuthenticated = require("./middleware/checkAuthenticated")
@@ -84,14 +82,12 @@ app.delete("/logout", logout )
 // add read and update port
 app.get("/dataMember", dataMember)
 app.post("/updateMember", updateMember)
-app.post("/updatePassword", updatePassword)
 // add button clear status data
 app.post("/clearDocStatus", clearDocStatus)
 
 // time keeping
 app.post("/caculationTime", caculationTime)
 app.post("/storeTimeLine", timeLine)
-app.post("/caculationSpace", caculationSpace)
 
 
 app.listen(4000,()=>{

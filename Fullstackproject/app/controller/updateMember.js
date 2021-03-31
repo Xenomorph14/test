@@ -1,5 +1,6 @@
 const { model } = require("mongoose");
 const StaffInformation = require("../models/staffInformation");
+const bcrypt = require("bcrypt");
 
 module.exports = (req,res) => {
     let id = req.body.id;
@@ -71,7 +72,7 @@ module.exports = (req,res) => {
                     id,
                     {
                         email: newEmail,
-                        password: newPassword,
+                        password: bcrypt.hashSync(newPassword,10),
                         name: newName,
                         birthday: newBirthday,
                         position: newPosition,
