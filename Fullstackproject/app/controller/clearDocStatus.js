@@ -14,7 +14,16 @@ module.exports = (req,res) => {
         }
         // Lưu dữ liệu status của ngày trước khi reset lại bằng biến saveStatus 
         console.log(status);
-        let saveStatus = status;
+        let date = new Date();
+        let newDate = String(date.getDate()) + "-" + String(date.getMonth()+1) + "-" + String(date.getFullYear());
+        let saveStatus = {
+            timeStart : status.timeStart,
+            timeEnd : status.timeEnd,
+            statusDay : 0,
+            Date : newDate
+        }
+        
+
         console.log("success");
         // lưu status ngày hiện tại vào table_of_works 
         tableOfWorks.findById(id, function (err, table){
@@ -31,7 +40,8 @@ module.exports = (req,res) => {
             {
                 timeKeeping: null,
                 timeStart: null,
-                timeEnd: null
+                timeEnd: null,
+                timeLine: []
             },
             {new: true},
             ( err, status ) => {

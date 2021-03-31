@@ -9,10 +9,6 @@ module.exports = (req,res) => {
             res.redirect("/createMember");
             return console.log("error");
         }
-        let newOldPassword = bcrypt.hashSync(oldPassword,10);
-        console.log(oldPassword);
-        console.log(newOldPassword);
-        console.log(staffInformation.password);
         // validate password
         const validate = bcrypt.compareSync(oldPassword, staffInformation.password)
         console.log(validate);
@@ -38,15 +34,16 @@ module.exports = (req,res) => {
                     },
                     {new: true},
                     ( err, staffInfo ) => {
-                        (err) => {
+                        if (err) {
                             model.redirect("/createMember");
                         }
-                        console.log("updating");
+                        console.log("success");
                         res.redirect("/createMember")
                     }
                 )
             } else if (newPassword === oldPassword){
-                console.log("New password same the old password");
+                res.redirect("/createMember");
+                return console.log("Fail: New password same the old password");
             }
         }
         // Trường hợp old password wrong

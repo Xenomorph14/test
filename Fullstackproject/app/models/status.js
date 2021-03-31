@@ -6,8 +6,9 @@ const moment = require("moment")
 
 const Status = new Schema({
     timeKeeping : { type:String, default: "" } ,
-    timeStart : { type: Date, default : Date.now} ,
-    timeEnd : { type:Date, default: Date.now },
+    timeStart : { type:String, default: "" } ,
+    timeEnd :  { type:String, default: "" },
+    timeLine : []
 })
 
 module.exports = mongoose.model("status",Status)

@@ -1,28 +1,48 @@
 const Status = require("../models/status")
-const db = require("../../config/db/mongodb");
 
 module.exports = (req,res) => {
-    console.log("start");
-    // return res.redirect("/createMember")
-    let id = req.body.idTimeKeeping;
+    let id = req.body.idCaculation;
     Status.findById(id, (err,status)=>{
         if (err){
             console.log("Không tìm thấy id!");
             return res.redirect("/createMember")
         }
-        let caculationTime = status.timeEnd - status.timeStart;
-        let seconds = Math.floor(caculationTime/1000);
-        let minutes = Math.floor(seconds/60);
-        let hours = Math.floor(minutes/60);
-        minutes = minutes - hours*60;
-        seconds = seconds - hours*60*60 - minutes*60;
+        
+        let timeStart = status.timeStart;
+        let timeEnd = status.timeEnd;
+        
+        let hour1 = Number(timeStart.substr(0,2));
+        let hour2 = Number(timeEnd.substr(0,2));
+        let minute1 = Number(timeStart.substr(3,2));
+        let minute2 = Number(timeEnd .substr(3,2));
+        let second1 = Number(timeStart.substr(6,2));
+        let second2 = Number(timeEnd .substr(6,2));
+                
+        let time = 0;
+        let time1 = hour1*60*60 + minute1*60 + second1;
+        let time2 = hour2*60*60 + minute2*60 + second2;
+        time = time2 - time1;
+        hours = Math.floor(time/3600);
+        minutes = Math.floor((time - hours*3600)/60);
+        seconds = time - hours*3600 - minutes*60;
+
+        if (hours < 10){
+            hours = String("0"+hours);
+        }
+        if (minutes < 10){
+            minutes = String("0"+minutes);
+        }
+        if (seconds < 10){
+            seconds = String("0"+seconds);
+        }
+
         Status.findByIdAndUpdate(
             id,
             {
                 timeKeeping : `${hours}:${minutes}:${seconds}`,
             },
             {new : true},
-            (err,status)=>{
+            (err,status) => {
                 if(err){
                     console.log("update failed!");
                     return res.redirect("/createMember")

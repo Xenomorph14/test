@@ -3,12 +3,13 @@ const { model } = require("mongoose");
 const StaffInformation = require("../models/staffInformation");
 
 module.exports = (req, res) => {
-    console.log("Reading!!");
     StaffInformation.find({}, function (error, members) {
-        (error) => {
-            res.redirect("/createMember")
+        if (error) {
+            console.log("read data fail!");
+            return res.redirect("/createMember")
         }
         console.log(members);
     })
+    res.redirect("/createMember")
     
 }

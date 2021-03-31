@@ -55,21 +55,18 @@ const home = require("./app/controller/home")
 const create = require("./app/controller/createMember")
 const storeMember = require("./app/controller/storeMember")
 const deleteDocStaff = require("./app/controller/deleteDocStaff");
-const deleteDocStatus = require("./app/controller/deleteDocStatus");
-const deleteDocTable = require("./app/controller/deleteDocTable");
 const dataMember = require("./app/controller/dataMember")     //read require
 const updateMember = require("./app/controller/updateMember") //update require
 const updatePassword = require("./app/controller/updatePassword") //update password require
 const clearDocStatus = require("./app/controller/clearDocStatus") //button clear status data
-const start = require("./app/controller/start")
-const finish = require("./app/controller/finish")
 const caculationTime = require("./app/controller/caculationTime")
+const timeLine = require("./app/controller/storeTimeLine")
+const caculationSpace = require("./app/controller/caculationSpace");
 
 const queryUserInfo = require("./app/controller/queryUserInfo")
-const sumary = require("./app/controller/sumary");
 const checkAuthenticated = require("./middleware/checkAuthenticated")
 const checkNotAuthenticated = require("./middleware/checkNotAuthenticated")
-const logout = require("./app/controller/logout")
+const logout = require("./app/controller/logout");
 
 app.get("/", checkNotAuthenticated , home)
 app.get("/createMember",checkAuthenticated,  create)
@@ -82,10 +79,7 @@ app.post("/storeMember", storeMember)
 // app.post("/storeStatus", storeStatus)
 // app.post("/storeTable", storeTable)
 app.post("/deleteDocStaff", deleteDocStaff )
-app.post("/deleteDocStatus", deleteDocStatus )
-app.post("/deleteDocTable", deleteDocTable )
 app.post("/query", queryUserInfo )
-app.post ("/sumary", sumary)
 app.delete("/logout", logout )
 // add read and update port
 app.get("/dataMember", dataMember)
@@ -94,9 +88,11 @@ app.post("/updatePassword", updatePassword)
 // add button clear status data
 app.post("/clearDocStatus", clearDocStatus)
 
-app.post("/start", start)
-app.post("/finish", finish)
+// time keeping
 app.post("/caculationTime", caculationTime)
+app.post("/storeTimeLine", timeLine)
+app.post("/caculationSpace", caculationSpace)
+
 
 app.listen(4000,()=>{
     console.log("App listening on port 4000");

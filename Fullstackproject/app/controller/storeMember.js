@@ -24,12 +24,10 @@ module.exports = async (req, res) => {
                 //Create table
                 TableOfWork.create({
                     _id :staffinfo._id,
-                        dateDetails:{
-                    }
+                        dateDetails:[]
                 },(err,table) => {
                     console.log(err,table);
                 })
-
             }
         })
     } catch {
